@@ -3,12 +3,14 @@ import {
   DEMO_AWARDS,
   DEMO_EVENTS,
   DEMO_HOUSES,
+  DEMO_LEADERS,
   DEMO_STUDENTS,
 } from "./demo-data";
 import {
   ActivityItem,
   DistrictEvent,
   House,
+  HouseLeader,
   LeaderboardRow,
   PointAward,
   Student,
@@ -34,6 +36,30 @@ export async function getEvents(): Promise<DistrictEvent[]> {
     .order("date", { ascending: true });
   if (error) throw error;
   return data as DistrictEvent[];
+}
+
+export async function getEvent(id: string): Promise<DistrictEvent | null> {
+  if (demoMode()) return DEMO_EVENTS.find((e) => e.id === id) ?? null;
+  const { data, error } = await getSupabase()
+    .from("events")
+    .select("*")
+    .eq("id", id)
+    .maybeSingle();
+  if (error) throw error;
+  return (data as DistrictEvent) ?? null;
+}
+
+export async function getHouseLeaders(houseId?: number): Promise<HouseLeader[]> {
+  if (demoMode()) {
+    return houseId
+      ? DEMO_LEADERS.filter((l) => l.house_id === houseId)
+      : DEMO_LEADERS;
+  }
+  let query = getSupabase().from("house_leaders").select("*").order("id");
+  if (houseId) query = query.eq("house_id", houseId);
+  const { data, error } = await query;
+  if (error) throw error;
+  return data as HouseLeader[];
 }
 
 export async function getAwards(): Promise<PointAward[]> {

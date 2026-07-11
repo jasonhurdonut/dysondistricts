@@ -6,6 +6,17 @@ export type House = {
   crest_url: string;
   groupme_url: string | null;
   leaders: string[] | null;
+  tagline: string | null;
+  description: string | null;
+};
+
+export type HouseLeader = {
+  id: number;
+  house_id: number;
+  name: string;
+  role: string | null;
+  email: string | null;
+  photo_url: string | null;
 };
 
 export type EventType = "challenge" | "bonding" | "trivia" | "collaboration";
@@ -18,6 +29,10 @@ export type DistrictEvent = {
   location: string | null;
   points_available: number | null;
   type: EventType;
+  end_time: string | null; // "HH:MM:SS"
+  image_url: string | null;
+  what_to_bring: string | null;
+  who_can_attend: string | null;
 };
 
 export type PointAward = {

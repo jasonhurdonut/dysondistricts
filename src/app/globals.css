@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f4efe3;
-  --paper-deep: #ebe4d2;
-  --card: #faf7ee;
-  --ink: #221d15;
-  --ink-soft: #6b6250;
-  --ink-faint: #9c927c;
-  --line: #d9d0ba;
-  --line-strong: #221d15;
-  --gold: #dfa733;
+  --paper: #ffffff;
+  --paper-deep: #f3f2f0;
+  --card: #ffffff;
+  --ink: #1e1b17;
+  --ink-soft: #5f5a52;
+  --ink-faint: #98938a;
+  --line: #e6e3dd;
+  --line-strong: #1e1b17;
+  --gold: #d69a2b;
   --red: #be4b44;
 
   --font-display: var(--font-fraunces), "Iowan Old Style", Georgia, serif;
-  --font-body: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-body: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
 }
 
 @theme inline {
@@ -33,6 +33,7 @@
 
 html {
   background: var(--paper);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -43,25 +44,15 @@ body {
   position: relative;
 }
 
-/* Grain overlay for a printed-paper feel */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 50;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-}
-
 .font-display {
   font-family: var(--font-display);
 }
 
+/* Small UI labels — title-case Inter (formerly all-caps). */
 .smallcaps {
   font-family: var(--font-body);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
+  text-transform: capitalize;
+  letter-spacing: 0.01em;
   font-weight: 600;
 }
 
@@ -109,8 +100,28 @@ body::before {
   animation-delay: 0.35s;
 }
 
+/* Mobile menu drawer */
+@keyframes drawer-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.drawer-fade {
+  animation: drawer-fade 0.16s ease-out both;
+}
+
+@keyframes drawer-item {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.drawer-item {
+  animation: drawer-item 0.32s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .rise, .score-bar {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise, .score-bar, .drawer-fade, .drawer-item {
     animation: none;
   }
 }

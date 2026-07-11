@@ -17,7 +17,15 @@ type EventInput = {
   location?: unknown;
   points_available?: unknown;
   type?: unknown;
+  end_time?: unknown;
+  image_url?: unknown;
+  what_to_bring?: unknown;
+  who_can_attend?: unknown;
 };
+
+function optionalText(v: unknown): string | null {
+  return typeof v === "string" && v.trim() ? v.trim() : null;
+}
 
 function validateEvent(body: EventInput) {
   const title = typeof body.title === "string" ? body.title.trim() : "";
@@ -35,14 +43,22 @@ function validateEvent(body: EventInput) {
   if (points !== null && (!Number.isFinite(points) || points < 0)) {
     return { error: "Points available must be a non-negative number." };
   }
+  const endTime = optionalText(body.end_time);
+  if (endTime && !/^\d{2}:\d{2}(:\d{2})?$/.test(endTime)) {
+    return { error: "End time must be HH:MM." };
+  }
   return {
     value: {
       title,
-      description: typeof body.description === "string" && body.description.trim() ? body.description.trim() : null,
+      description: optionalText(body.description),
       date: new Date(date).toISOString(),
-      location: typeof body.location === "string" && body.location.trim() ? body.location.trim() : null,
+      location: optionalText(body.location),
       points_available: points,
       type,
+      end_time: endTime,
+      image_url: optionalText(body.image_url),
+      what_to_bring: optionalText(body.what_to_bring),
+      who_can_attend: optionalText(body.who_can_attend),
     },
   };
 }

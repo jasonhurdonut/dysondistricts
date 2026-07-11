@@ -13,6 +13,10 @@ type Draft = {
   location: string;
   points_available: string;
   type: EventType;
+  end_time: string; // "HH:MM"
+  image_url: string;
+  what_to_bring: string;
+  who_can_attend: string;
 };
 
 const EMPTY: Draft = {
@@ -22,6 +26,10 @@ const EMPTY: Draft = {
   location: "",
   points_available: "",
   type: "challenge",
+  end_time: "",
+  image_url: "",
+  what_to_bring: "",
+  who_can_attend: "",
 };
 
 function toLocalInput(iso: string): string {
@@ -155,6 +163,51 @@ export function EventsManager({ events }: { events: DistrictEvent[] }) {
             className="mt-1.5 w-full border border-line bg-paper px-3 py-2.5 outline-none focus:border-line-strong resize-y"
           />
         </label>
+        <details className="border-t border-line pt-4">
+          <summary className="smallcaps text-[10px] text-ink-soft cursor-pointer">
+            Detail-page extras (optional)
+          </summary>
+          <div className="mt-4 space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <label className="block">
+                <span className="smallcaps text-[10px] text-ink-soft">End time</span>
+                <input
+                  type="time"
+                  value={draft.end_time}
+                  onChange={(e) => set("end_time", e.target.value)}
+                  className="mt-1.5 w-full border border-line bg-paper px-3 py-2.5 outline-none focus:border-line-strong"
+                />
+              </label>
+              <label className="block">
+                <span className="smallcaps text-[10px] text-ink-soft">Image URL</span>
+                <input
+                  value={draft.image_url}
+                  onChange={(e) => set("image_url", e.target.value)}
+                  placeholder="https://…"
+                  className="mt-1.5 w-full border border-line bg-paper px-3 py-2.5 outline-none focus:border-line-strong placeholder:text-ink-faint"
+                />
+              </label>
+            </div>
+            <label className="block">
+              <span className="smallcaps text-[10px] text-ink-soft">What to bring</span>
+              <textarea
+                value={draft.what_to_bring}
+                onChange={(e) => set("what_to_bring", e.target.value)}
+                rows={2}
+                className="mt-1.5 w-full border border-line bg-paper px-3 py-2.5 outline-none focus:border-line-strong resize-y"
+              />
+            </label>
+            <label className="block">
+              <span className="smallcaps text-[10px] text-ink-soft">Who can attend</span>
+              <textarea
+                value={draft.who_can_attend}
+                onChange={(e) => set("who_can_attend", e.target.value)}
+                rows={2}
+                className="mt-1.5 w-full border border-line bg-paper px-3 py-2.5 outline-none focus:border-line-strong resize-y"
+              />
+            </label>
+          </div>
+        </details>
         {error && <p className="text-sm text-crimson">{error}</p>}
         <div className="flex gap-3">
           <button
@@ -215,6 +268,10 @@ export function EventsManager({ events }: { events: DistrictEvent[] }) {
                       location: ev.location ?? "",
                       points_available: ev.points_available?.toString() ?? "",
                       type: ev.type,
+                      end_time: ev.end_time?.slice(0, 5) ?? "",
+                      image_url: ev.image_url ?? "",
+                      what_to_bring: ev.what_to_bring ?? "",
+                      who_can_attend: ev.who_can_attend ?? "",
                     })
                   }
                   className="smallcaps text-[9px] border border-line px-3 py-1.5 text-ink-soft hover:border-line-strong hover:text-ink transition-colors"

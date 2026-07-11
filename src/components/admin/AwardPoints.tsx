@@ -55,7 +55,7 @@ export function AwardPoints({
   return (
     <form onSubmit={onSubmit} className="max-w-2xl space-y-7">
       <div>
-        <p className="smallcaps text-[10px] text-ink-soft mb-3">1 — Pick the house</p>
+        <p className="smallcaps text-[10px] text-ink-soft mb-3">1 — Pick the district</p>
         <div className="grid grid-cols-3 sm:grid-cols-6 gap-2.5">
           {houses.map((h) => (
             <button

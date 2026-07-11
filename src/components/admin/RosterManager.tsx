@@ -70,7 +70,7 @@ export function RosterManager({
       <div className="ledger-frame bg-card px-6 py-6 max-w-2xl">
         <p className="smallcaps text-[10px] text-ink-soft">Upload roster CSV</p>
         <p className="text-sm text-ink-soft mt-2">
-          Three columns: <code className="bg-paper-deep px-1.5 py-0.5">name, netid, house</code>.
+          Three columns: <code className="bg-paper-deep px-1.5 py-0.5">name, netid, district</code>.
           A header row is fine. Re-uploading <strong>replaces the whole roster</strong> —
           the CSV is the source of truth.
         </p>
@@ -127,7 +127,7 @@ export function RosterManager({
           <input
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            placeholder="Search name, NetID, or house…"
+            placeholder="Search name, NetID, or district…"
             className="border border-line bg-paper px-3 py-2 text-sm outline-none focus:border-line-strong placeholder:text-ink-faint w-64"
           />
         </div>
@@ -144,7 +144,7 @@ export function RosterManager({
                 <tr className="text-left sticky top-0 bg-paper">
                   <th className="smallcaps text-[9px] text-ink-soft font-semibold py-2.5 pr-4">Name</th>
                   <th className="smallcaps text-[9px] text-ink-soft font-semibold py-2.5 pr-4">NetID</th>
-                  <th className="smallcaps text-[9px] text-ink-soft font-semibold py-2.5">House</th>
+                  <th className="smallcaps text-[9px] text-ink-soft font-semibold py-2.5">District</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-line">

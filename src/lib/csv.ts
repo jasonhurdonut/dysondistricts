@@ -16,12 +16,12 @@ export function parseRosterCsv(text: string): {
     const fields = splitCsvLine(line).map((f) => f.trim());
     if (idx === 0 && fields[0]?.toLowerCase() === "name") return; // header
     if (fields.length < 3) {
-      errors.push(`Line ${idx + 1}: expected 3 columns (name, netid, house).`);
+      errors.push(`Line ${idx + 1}: expected 3 columns (name, netid, district).`);
       return;
     }
     const [name, netid, house] = fields;
     if (!name || !netid || !house) {
-      errors.push(`Line ${idx + 1}: missing name, netid, or house.`);
+      errors.push(`Line ${idx + 1}: missing name, netid, or district.`);
       return;
     }
     rows.push({ name, netid: netid.toLowerCase(), house });

@@ -1,7 +1,7 @@
 # Dyson Districts — Web App PRD (v1)
 
 **Owner:** Dyson Undergraduate Council
-**Status:** Draft for build
+**Status:** Shipped (frozen). Post-v1 work, including schema deltas, lives in [PHASE-2.md](PHASE-2.md).
 **Scope:** Minimal v1 — roster, leaderboard, schedule
 
 ---

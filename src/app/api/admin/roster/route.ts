@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
   for (const row of rows) {
     const houseId = houseByName.get(row.house.toLowerCase());
     if (!houseId) {
-      errors.push(`"${row.netid}": unknown house "${row.house}".`);
+      errors.push(`"${row.netid}": unknown district "${row.house}".`);
       continue;
     }
     if (seen.has(row.netid)) {
@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
 
   if (students.length === 0) {
     return NextResponse.json(
-      { error: "No rows matched a valid house.", details: errors },
+      { error: "No rows matched a valid district.", details: errors },
       { status: 400 }
     );
   }

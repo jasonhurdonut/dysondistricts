@@ -1,6 +1,6 @@
 # Dyson Districts — Web App
 
-The single source of truth for the Dyson Districts house games: roster,
+The single source of truth for the Dyson Districts games: roster,
 leaderboard, and schedule. Built for the Dyson Undergraduate Council.
 See [the PRD](<Dyson_Districts_Web_App_PRD (1).md>) for scope.
 
@@ -8,10 +8,13 @@ See [the PRD](<Dyson_Districts_Web_App_PRD (1).md>) for scope.
 
 | Route | What it is |
 |---|---|
-| `/` | **Find My House** — students enter a NetID, get their house, crest, leaders, and GroupMe link. Own-lookup only; the roster is never browsable. |
-| `/leaderboard` | **Standings** — six houses ranked by the sum of point awards, plus "The Ledger" recent-activity feed. Totals are always derived, never edited. |
-| `/schedule` | **Schedule** — upcoming and past events with type, location, and points at stake. |
-| `/admin` | **Admin panel** — passcode-gated. Roster CSV upload, event create/edit/delete, and point awards (house + event + points + note, stamped with your name and timestamp). |
+| `/` | **Home** — how it works, a typical week, and the social banner (IG/GroupMe for social, app for truth). |
+| `/my-district` | **Find My District** — students enter a NetID, get their district, crest, tagline, leaders, and GroupMe link. Own-lookup only; the roster is never browsable. |
+| `/districts` | **Meet the Six Districts** — crest, color, personality, and leaders per district. |
+| `/points` | **How Points Work** — the Dyson Cup, point categories, and FAQ. |
+| `/leaderboard` | **Standings** — six districts ranked by the sum of point awards, plus "The Ledger" recent-activity feed. Totals are always derived, never edited. |
+| `/schedule` | **Schedule** — filterable by category (challenge/bonding/trivia/collaboration); each event links to a detail page with calendar export (.ics + Google). |
+| `/admin` | **Admin panel** — passcode-gated. Roster CSV upload, event create/edit/delete (incl. detail-page extras), and point awards (district + event + points + note, stamped with your name and timestamp). |
 
 ## Running locally
 
@@ -25,9 +28,12 @@ sample data, and admin writes are disabled.
 
 ## Going live (Supabase)
 
-1. In the Supabase dashboard, open the **SQL editor** and run
-   [`supabase/schema.sql`](supabase/schema.sql). This creates the tables,
-   row-level-security policies, and the six houses.
+1. In the Supabase dashboard, open the **SQL editor** and run, in order:
+   [`supabase/schema.sql`](supabase/schema.sql) (v1 tables, RLS, six districts),
+   [`supabase/phase2-migration.sql`](supabase/phase2-migration.sql) (district/event
+   enrichment + the `house_leaders` table), and
+   [`dyson_districts_seed.sql`](dyson_districts_seed.sql) (canonical district
+   taglines and descriptions).
 2. In **Settings → API**, copy the project URL and the `service_role` key
    into `.env.local`:
 
@@ -40,7 +46,7 @@ sample data, and admin writes are disabled.
 3. Restart the dev server. The demo banner disappears and the admin panel
    goes live.
 4. Log in at `/admin` (enter your name so awards are attributed to you) and
-   upload the roster CSV — columns `name, netid, house`
+   upload the roster CSV — columns `name, netid, district`
    ([sample](sample-roster.csv)). Re-uploading replaces the whole roster.
 
 The service-role key is only ever used server-side (API routes and server
@@ -50,6 +56,6 @@ the anon key.
 
 ## Data model
 
-`houses`, `students`, `events`, `point_awards` — a house's score is
-`SUM(point_awards.points)` for that house, computed on every page load, so
+`houses`, `students`, `events`, `point_awards` — a district's score is
+`SUM(point_awards.points)` for that district, computed on every page load, so
 every point stays auditable (who, what event, when, why).

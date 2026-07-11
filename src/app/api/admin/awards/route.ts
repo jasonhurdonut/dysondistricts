@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
   const note = typeof body.note === "string" && body.note.trim() ? body.note.trim() : null;
 
   if (!Number.isInteger(houseId) || houseId <= 0) {
-    return NextResponse.json({ error: "Pick a house." }, { status: 400 });
+    return NextResponse.json({ error: "Pick a district." }, { status: 400 });
   }
   if (!eventId) {
     return NextResponse.json({ error: "Pick the event this award ties back to." }, { status: 400 });
