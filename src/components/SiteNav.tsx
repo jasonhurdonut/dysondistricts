@@ -84,13 +84,15 @@ export function SiteNav() {
           />
           <div className="relative flex flex-col h-full">
             <div className="flex items-center justify-between px-6 h-[73px] shrink-0">
-              <Image
-                src="/logo.png"
-                alt="Dyson Districts"
-                width={2018}
-                height={173}
-                className="h-6 w-auto max-w-[62vw] object-contain object-left drawer-fade"
-              />
+              <Link href="/" onClick={() => setOpen(false)} aria-label="Dyson Districts home">
+                <Image
+                  src="/logo.png"
+                  alt="Dyson Districts"
+                  width={2018}
+                  height={173}
+                  className="h-6 w-auto max-w-[62vw] object-contain object-left drawer-fade"
+                />
+              </Link>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
