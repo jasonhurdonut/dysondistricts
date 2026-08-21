@@ -23,8 +23,7 @@ export default async function MyDistrictPage() {
           .
         </h1>
         <p className="mt-6 max-w-xl mx-auto text-ink-soft rise rise-3">
-          Enter your Cornell NetID to find yours — no account, no password,
-          ten seconds flat.
+          Enter your Cornell NetID to find yours.
         </p>
         <div className="mt-8 rise rise-4">
           <HouseLookup />

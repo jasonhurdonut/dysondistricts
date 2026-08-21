@@ -28,10 +28,6 @@ export default async function LeaderboardPage() {
             Standings
           </h1>
         </div>
-        <p className="text-xs text-ink-soft max-w-xs rise rise-3">
-          Every point is the sum of individual awards — auditable, timestamped,
-          and tied to an event. No mystery totals.
-        </p>
       </section>
 
       <div className="grid lg:grid-cols-[1fr_320px] gap-10 pt-10">

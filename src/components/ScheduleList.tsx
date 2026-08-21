@@ -80,17 +80,21 @@ function EventRow({ event, index, past }: { event: DistrictEvent; index: number;
 
 export function ScheduleList({ events }: { events: DistrictEvent[] }) {
   const [filter, setFilter] = useState<Filter>("all");
-  const now = Date.now();
+  // An event is "past" only once its day is over, so anything happening today
+  // stays under Upcoming regardless of the time of day.
+  const startOfToday = new Date();
+  startOfToday.setHours(0, 0, 0, 0);
+  const cutoff = startOfToday.getTime();
 
   const { upcoming, past } = useMemo(() => {
     const visible = filter === "all" ? events : events.filter((e) => e.type === filter);
     return {
-      upcoming: visible.filter((e) => Date.parse(e.date) >= now),
+      upcoming: visible.filter((e) => Date.parse(e.date) >= cutoff),
       past: visible
-        .filter((e) => Date.parse(e.date) < now)
+        .filter((e) => Date.parse(e.date) < cutoff)
         .sort((a, b) => b.date.localeCompare(a.date)),
     };
-  }, [events, filter, now]);
+  }, [events, filter, cutoff]);
 
   return (
     <div>

@@ -42,10 +42,7 @@ export function AdminLogin() {
       </label>
       <label className="block">
         <span className="smallcaps text-[10px] text-ink-soft">
-          Your name{" "}
-          <span className="normal-case tracking-normal font-normal text-ink-faint">
-            — stamped on every point you award
-          </span>
+          Your name
         </span>
         <input
           value={name}
