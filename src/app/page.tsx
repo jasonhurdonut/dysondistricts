@@ -110,7 +110,7 @@ export default async function HomePage() {
       </div>
 
       <div className="mx-auto max-w-6xl px-5 relative">
-        <section className="pt-16 pb-20 md:pt-20 md:pb-12">
+        <section className="pt-8 pb-20 md:pt-20 md:pb-12">
           <h1 className="font-display font-semibold tracking-tight leading-[0.97] text-6xl md:text-7xl mt-4 max-w-3xl rise rise-2">
             Welcome to Dyson Districts!
           </h1>
