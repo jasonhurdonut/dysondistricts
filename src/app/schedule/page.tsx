@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { getEvents } from "@/lib/data";
 import { ScheduleList } from "@/components/ScheduleList";
@@ -10,11 +9,6 @@ export default async function SchedulePage() {
 
   return (
     <div className="relative overflow-hidden">
-      {/* Faded crest watermark (mockup 7) */}
-      <div className="pointer-events-none absolute -right-16 top-6 w-[360px] h-[400px] opacity-[0.06] grayscale select-none hidden md:block">
-        <Image src="/crests/dyson-games.png" alt="" fill className="object-contain" />
-      </div>
-
       <div className="mx-auto max-w-5xl px-5 relative">
         <section className="pt-12 pb-8">
           <p className="smallcaps text-xs text-ink-soft rise rise-1">

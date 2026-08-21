@@ -81,7 +81,7 @@ export default async function LeaderboardPage() {
 
         <aside className="rise rise-4">
           <h2 className="smallcaps text-xs border-b border-line-strong pb-3">
-            The Ledger — recent awards
+            Recent awards
           </h2>
           {activity.length === 0 ? (
             <p className="mt-4 text-sm text-ink-soft">
