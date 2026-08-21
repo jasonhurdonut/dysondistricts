@@ -21,9 +21,6 @@ export default async function LeaderboardPage() {
     <div className="mx-auto max-w-6xl px-5">
       <section className="pt-12 pb-8 flex flex-wrap items-end justify-between gap-4 border-b border-line-strong">
         <div>
-          <p className="smallcaps text-xs text-ink-soft rise rise-1">
-            The official score
-          </p>
           <h1 className="font-display font-semibold tracking-tight text-5xl md:text-6xl mt-2 rise rise-2">
             Standings
           </h1>

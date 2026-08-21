@@ -10,9 +10,6 @@ export default async function MyDistrictPage() {
   return (
     <div className="mx-auto max-w-6xl px-5">
       <section className="pt-14 pb-10 md:pt-20 md:pb-14 text-center">
-        <p className="smallcaps text-xs text-ink-soft rise rise-1">
-          Cornell Dyson · Class of 2030
-        </p>
         <h1 className="font-display font-semibold tracking-tight leading-[0.95] text-[13vw] sm:text-6xl md:text-7xl mt-4 rise rise-2">
           Every Dyson freshman
           <br />

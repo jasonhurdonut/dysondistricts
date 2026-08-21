@@ -11,9 +11,6 @@ export default async function SchedulePage() {
     <div className="relative overflow-hidden">
       <div className="mx-auto max-w-5xl px-5 relative">
         <section className="pt-12 pb-8">
-          <p className="smallcaps text-xs text-ink-soft rise rise-1">
-            Challenges · Bonding · Trivia · Collaboration
-          </p>
           <h1 className="font-display font-semibold tracking-tight text-5xl md:text-6xl mt-2 rise rise-2">
             Schedule
           </h1>
