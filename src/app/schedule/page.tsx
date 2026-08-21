@@ -25,21 +25,29 @@ export default async function SchedulePage() {
 
         <ScheduleList events={events} />
 
-        <section className="mt-12 mb-4 ledger-frame bg-card px-6 py-6 md:px-8 flex flex-wrap items-center justify-between gap-4">
+        <section className="mt-12 mb-8 px-6 py-8 md:px-10 bg-ink text-paper flex flex-wrap items-center justify-between gap-5">
           <div>
-            <p className="font-display font-semibold text-xl md:text-2xl">
-              Every event. Every point. Every district counts.
+            <p className="font-display font-semibold text-2xl md:text-3xl">
+              See where your district stands.
             </p>
-            <p className="text-sm text-ink-soft mt-1">
-              Check back often — new events are added throughout the semester.
+            <p className="text-sm opacity-70 mt-1">
+              Check the leaderboard and upcoming events.
             </p>
           </div>
-          <Link
-            href="/leaderboard"
-            className="smallcaps text-xs bg-ink text-paper px-6 py-3 hover:bg-ink-soft transition-colors"
-          >
-            View leaderboard →
-          </Link>
+          <div className="flex gap-3">
+            <Link
+              href="/leaderboard"
+              className="smallcaps text-xs bg-paper text-ink px-6 py-3 hover:opacity-90 transition-opacity"
+            >
+              View leaderboard
+            </Link>
+            <Link
+              href="/schedule"
+              className="smallcaps text-xs border border-paper px-6 py-3 hover:bg-paper hover:text-ink transition-colors"
+            >
+              View schedule
+            </Link>
+          </div>
         </section>
       </div>
     </div>
