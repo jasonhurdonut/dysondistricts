@@ -2,6 +2,7 @@ import Link from "next/link";
 import { TYPE_STYLES } from "@/lib/event-types";
 import {
   BulbIcon,
+  HandshakeIcon,
   MountainIcon,
   PeopleIcon,
   TrophyIcon,
@@ -22,17 +23,26 @@ const WAYS = [
     color: TYPE_STYLES.bonding.color,
     tint: TYPE_STYLES.bonding.tint,
     icon: PeopleIcon,
-    body: "Build connections and show district pride through events and activities.",
-    examples: ["Attend district events", "Bring a friend", "District spirit activities"],
+    body: "Just spend time together. Casual, district-specific hangouts to eat, relax, and get to know each other.",
+    examples: ["Grab a meal together", "Low-key district hangouts", "Coffee and conversation"],
     cap: "Up to 100 pts",
   },
   {
-    title: "Trivia & Collaboration",
+    title: "Trivia",
     color: TYPE_STYLES.trivia.color,
     tint: TYPE_STYLES.trivia.tint,
     icon: BulbIcon,
-    body: "Test your knowledge and team up to solve, think, and win.",
-    examples: ["District trivia", "Collaborative puzzles", "Knowledge challenges"],
+    body: "Test your knowledge and think fast under pressure.",
+    examples: ["District trivia nights", "Themed quiz rounds", "Knowledge challenges"],
+    cap: "Up to 100 pts",
+  },
+  {
+    title: "Collaboration",
+    color: TYPE_STYLES.collaboration.color,
+    tint: TYPE_STYLES.collaboration.tint,
+    icon: HandshakeIcon,
+    body: "Build connections and show district pride through events and activities.",
+    examples: ["Attend district events", "Bring a friend", "District spirit activities"],
     cap: "Up to 100 pts",
   },
 ];
@@ -91,7 +101,7 @@ export default function PointsPage() {
 
       <section className="pt-10">
         <h2 className="smallcaps text-xs text-ink-soft mb-6">Ways to earn points</h2>
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {WAYS.map((way, i) => (
             <article key={way.title} className={`ledger-frame bg-card px-6 py-6 flex flex-col rise rise-${i + 1}`}>
               <div

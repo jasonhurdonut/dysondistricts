@@ -16,21 +16,21 @@ const DARK = "#1e1b17";
 
 const STEPS = [
   {
-    day: "Monday",
+    day: "Sept 1st",
     title: "Challenge Drops",
-    body: "A new challenge is revealed every Monday.",
+    body: "A new challenge drops at the start of the month.",
     icon: CalendarIcon,
   },
   {
-    day: "All week",
+    day: "All month",
     title: "Participate & Connect",
     body: "Complete challenges, attend events, and earn points for your district.",
     icon: PeopleIcon,
   },
   {
-    day: "Friday",
+    day: "Sept 30th",
     title: "Leaderboard Reveal",
-    body: "See how your district ranks and celebrate the week's top performers.",
+    body: "See how your district ranks and celebrate the month's top performers.",
     icon: TrophyIcon,
   },
 ];

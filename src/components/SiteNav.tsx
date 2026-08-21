@@ -9,7 +9,6 @@ import {
   CloseIcon,
   MenuIcon,
   SearchIcon,
-  ShieldIcon,
   ShieldPersonIcon,
   StarIcon,
   TrophyIcon,

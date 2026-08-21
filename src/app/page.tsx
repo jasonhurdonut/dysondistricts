@@ -5,6 +5,7 @@ import { TypicalWeek } from "@/components/TypicalWeek";
 import { TYPE_STYLES } from "@/lib/event-types";
 import {
   BulbIcon,
+  HandshakeIcon,
   MountainIcon,
   PeopleIcon,
   TrophyIcon,
@@ -16,7 +17,7 @@ const STEPS = [
   {
     n: 1,
     title: "Find Your District",
-    body: "Enter your Cornell NetID to discover your district — no account, no password.",
+    body: "Enter your Cornell NetID to discover your district.",
     href: "/my-district",
     cta: "Look up your NetID",
   },
@@ -51,17 +52,26 @@ const WAYS = [
     color: TYPE_STYLES.bonding.color,
     tint: TYPE_STYLES.bonding.tint,
     icon: PeopleIcon,
-    body: "Build connections and show district pride through events and activities.",
-    examples: ["Attend district events", "Bring a friend", "District spirit activities"],
+    body: "Just spend time together. Casual, district-specific hangouts to eat, relax, and get to know each other.",
+    examples: ["Grab a meal together", "Low-key district hangouts", "Coffee and conversation"],
     cap: "Up to 100 pts",
   },
   {
-    title: "Trivia & Collaboration",
+    title: "Trivia",
     color: TYPE_STYLES.trivia.color,
     tint: TYPE_STYLES.trivia.tint,
     icon: BulbIcon,
-    body: "Test your knowledge and team up to solve, think, and win.",
-    examples: ["District trivia", "Collaborative puzzles", "Knowledge challenges"],
+    body: "Test your knowledge and think fast under pressure.",
+    examples: ["District trivia nights", "Themed quiz rounds", "Knowledge challenges"],
+    cap: "Up to 100 pts",
+  },
+  {
+    title: "Collaboration",
+    color: TYPE_STYLES.collaboration.color,
+    tint: TYPE_STYLES.collaboration.tint,
+    icon: HandshakeIcon,
+    body: "Build connections and show district pride through events and activities.",
+    examples: ["Attend district events", "Bring a friend", "District spirit activities"],
     cap: "Up to 100 pts",
   },
 ];
@@ -94,17 +104,26 @@ export default async function HomePage() {
 
   return (
     <div className="relative overflow-hidden">
-      {/* Faded crest watermark */}
-      <div className="pointer-events-none absolute right-[250px] top-[30px] w-[320px] h-[340px] opacity-[0.06] grayscale select-none hidden md:block">
+      {/* Dyson Games crest (desktop, full opacity) */}
+      <div className="pointer-events-none absolute right-[250px] top-[30px] w-[320px] h-[340px] select-none hidden md:block">
         <Image src="/crests/dyson-games.png" alt="" fill className="object-contain" />
       </div>
 
       <div className="mx-auto max-w-6xl px-5 relative">
-        <section className="pt-14 pb-12 md:pt-20">
-          <h1 className="font-display font-semibold tracking-tight leading-[0.97] text-5xl md:text-7xl mt-4 max-w-3xl rise rise-2">
+        <section className="pt-16 pb-20 md:pt-20 md:pb-12">
+          <h1 className="font-display font-semibold tracking-tight leading-[0.97] text-6xl md:text-7xl mt-4 max-w-3xl rise rise-2">
             Welcome to Dyson Districts!
           </h1>
-          <p className="mt-6 max-w-xl text-ink-soft rise rise-3">
+          {/* Mobile-only crest beneath the heading */}
+          <div className="md:hidden relative w-64 h-64 mt-10 mx-auto rise rise-3">
+            <Image
+              src="/crests/dyson-games.png"
+              alt="Dyson Games crest"
+              fill
+              className="object-contain"
+            />
+          </div>
+          <p className="mt-10 md:mt-6 max-w-xl text-ink-soft rise rise-3">
             A yearlong bonding opportunity for Dyson freshmen and upperclassmen.
           </p>
           <div className="mt-8 flex flex-wrap gap-3 rise rise-4">
@@ -134,7 +153,7 @@ export default async function HomePage() {
                 href={step.href}
                 className={`group ledger-frame bg-card px-6 py-6 flex flex-col rise rise-${i + 1} hover:-translate-y-1 transition-transform`}
               >
-                <span className="font-display font-semibold text-5xl text-gold">
+                <span className="font-display font-semibold text-5xl text-[#B81820]">
                   {step.n}
                 </span>
                 <h3 className="font-display font-semibold text-2xl mt-3">
@@ -152,7 +171,7 @@ export default async function HomePage() {
         <section className="py-12 border-t border-line">
           <div className="flex items-baseline justify-between flex-wrap gap-3">
             <h2 className="font-display font-semibold text-3xl md:text-4xl tracking-tight">
-              A typical week
+              A typical month
             </h2>
             <Link href="/schedule" className="smallcaps text-[10px] text-ink-soft hover:text-ink">
               Full schedule →
@@ -168,7 +187,7 @@ export default async function HomePage() {
             {houses.map((house, i) => (
               <Link
                 key={house.id}
-                href="/districts"
+                href="/my-district"
                 className={`group flex flex-col items-center gap-3 rise rise-${i + 1}`}
               >
                 <div className="relative w-16 h-20 md:w-20 md:h-24 transition-transform duration-300 group-hover:-translate-y-1.5">
@@ -216,7 +235,7 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="mt-10 grid md:grid-cols-3 gap-5">
+          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {WAYS.map((way) => (
               <article key={way.title} className="ledger-frame bg-card px-6 py-6 flex flex-col">
                 <div
